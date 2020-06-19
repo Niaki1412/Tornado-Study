@@ -6,6 +6,19 @@
 import tornado.ioloop
 import tornado.web
 
+
+"""打印请求头信息"""
+# class GetRequestHandler(tornado.web.RequestHandler):
+#     def get(self,*args,**kwargs):
+#             print(self.request)
+#             print(self.request.protocol)
+#             print(self.request.host_name)
+#             print(self.request.host)
+#             print(self.request.headers)
+#             print(self.request.headers['User-Agent'])
+
+
+
 # 设置代理服务器（用来判断是否是爬虫访问）
 User_Agent = ["Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3314.0 Safari/537.36 SE 2.X MetaSr 1.0"]
 class AcessHandler(tornado.web.RequestHandler):
@@ -65,6 +78,7 @@ def make_app():
     return tornado.web.Application([
         (r'^/$',AcessHandler),
         (r'^/visit/$', VisitHandler),
+        (r'^/getheader/$', GetRequestHandler),
 
     ])
 
